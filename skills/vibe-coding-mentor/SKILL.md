@@ -74,6 +74,9 @@ description: Use when the user is learning to build software with an AI agent an
 ## Аудит проекта
 
 Полный чек-лист с командами проверки: `references/project-checklist.md`.
+Если установлен скил `vibecoding` — запусти его скрипт вместо ручного обхода:
+`bash ~/.claude/skills/vibecoding/scripts/diagnose.sh <путь>`, он проверяет те же
+разделы за один заход.
 Формат вывода — три колонки: **есть / нет / не нужно на этом этапе**. Никогда не вываливай
 весь список задач: назови два самых дорогих пробела и объясни цену каждого.
 
