@@ -211,6 +211,41 @@ Vercel · Supabase · 21st.dev, плюс фолбэки на CLI.
 - **Выключатель** — прямое указание пользователя главнее скила. «Просто сделай» → делает,
   но заканчивает разбором на три строки
 
+## Что должно стоять у вайбкодера
+
+Подборка внутри скила — `references/recommended-stack.md`, собрана фактическим поиском
+по `npx skills find` (снимок на 28.08.2026).
+
+**Сначала плагины** — они дают основу и ставятся другой командой:
+
+```bash
+claude plugin install superpowers@claude-plugins-official   # brainstorming, TDD, verification
+claude plugin install claude-mem@thedotmack                 # память между сессиями
+claude plugin install frontend-design@claude-plugins-official
+claude plugin install vercel@claude-plugins-official
+```
+
+**Потом четыре скила**, которых не хватает почти каждому вайбкод-проекту:
+
+```bash
+npx skills add vercel-labs/agent-skills@deploy-to-vercel -g -y      # 115.7K — публикация
+npx skills add addyosmani/web-quality-skills@accessibility -g -y    #  48.2K — доступность
+npx skills add trkbt10/indexion-skills@indexion-readme -g -y        #   5.1K — README
+npx skills add open-mercato/skills@om-root-cause -g -y              #    743 — причина бага
+```
+
+Дальше — **работать**, и доставлять под стек по мере надобности: TypeScript, React/Next.js,
+security review, web vitals, refactor, commit messages, PR review, документация.
+Полные таблицы с числами установок — в файле скила.
+
+Честно о списке: числа установок означают популярность, **не качество**, и стареют.
+Скил выполняется с полными правами агента — открывай `SKILL.md` глазами перед установкой.
+Тридцать установленных скилов не делают кодером; четыре используемых — делают.
+
+Чего в подборке нет: универсального скила на тесты (всё найденное заточено под чужие
+стеки — работает `test-driven-development` из `superpowers`), базы данных и планирования
+(слабее, чем `brainstorming` и `writing-plans` оттуда же).
+
 ## Ограничения
 
 - **Не оттестирован.** По методике `writing-skills` скил положено прогонять через
