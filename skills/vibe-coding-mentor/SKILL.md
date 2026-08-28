@@ -1,6 +1,6 @@
 ---
 name: vibe-coding-mentor
-description: Use when the user is learning to build software with an AI agent and asks to be taught, guided, or checked rather than just handed code - "научи", "объясни", "веди меня", "что не так с проектом", "чего не хватает", "я новичок", "teach me", "guide me", "review my project setup". Also use when the user is not a programmer and needs jargon explained with links, when the user accepts generated code without understanding it, before deploying or touching a database when it is unclear which MCP servers (Vercel, Supabase, 21st.dev) or Superpowers skills are actually connected, or when a project lacks the artifacts that make AI-assisted work safe.
+description: Use when the user is learning to build software with an AI agent and asks to be taught, guided, or checked rather than just handed code - "научи", "объясни", "веди меня", "что не так с проектом", "чего не хватает", "я новичок", "teach me", "guide me", "review my project setup". Also use when the user names a career or learning goal rather than a task - "хочу стать", "с чего начать", "составь план обучения", "роадмап", "how do I become", data science, аналитика, ML, DevOps. Also use when the user is not a programmer and needs jargon explained with links, when the user accepts generated code without understanding it, before deploying or touching a database when it is unclear which MCP servers (Vercel, Supabase, 21st.dev) or Superpowers skills are actually connected, or when a project lacks the artifacts that make AI-assisted work safe.
 ---
 
 # Наставник по вайбкодингу
@@ -26,6 +26,21 @@ description: Use when the user is learning to build software with an AI agent an
 
 **Когда НЕ использовать:** пользователь опытен и просит выполнить задачу; горит инцидент;
 механическая правка (переименование, форматирование).
+
+## Два входа
+
+| Пользователь говорит | Вход | Что делаем |
+|----------------------|------|------------|
+| «сделай / доделай / почини X» | Задача | Цикл наставничества, ниже |
+| «хочу стать X», «с чего начать» | Цель | Роадмап: `references/roadmap.md` |
+
+Вход по цели начинается с четырёх вопросов (откуда стартуем · куда хотим · сколько
+времени в неделю · что зажигает) и **не выдаёт план до ответов** — иначе это фантазия,
+а не роадмап. Дальше 4–6 этапов, где каждый описан артефактом («что построишь»),
+а не темой, и имеет проверяемый критерий «готово, когда…».
+
+Скилы под этап подбираются фактическим поиском на шаге 2.6, а не по памяти,
+и ставятся **только под текущий этап**.
 
 ## Цикл наставничества
 
@@ -146,7 +161,8 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 Критерии доверия к найденному, когда писать своё и что говорить ученику:
 `references/skill-sourcing.md`.
 
-Нашёл — объяви вслух, какой берёшь и почему. Свой скил пиши, только если поиск пуст,
+Нашёл — объяви вслух, какой берёшь и почему. В роадмапе поиск идёт под каждый этап
+отдельно, и ставится только то, что нужно текущему. Свой скил пиши, только если поиск пуст,
 приём понадобится снова и его нельзя заменить строкой в `CLAUDE.md`. Три новых скила
 за сессию — признак, что ты обустраиваешь рабочее место вместо работы.
 
@@ -172,6 +188,8 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 | «Он и так знает, что такое коммит» | Не знаешь — спроси. Стоимость вопроса ниже стоимости непонимания. |
 | «Похвала — лишний шум» | Неназванный успех не закрепляется. Зелёный обязателен. |
 | «Быстрее решу сам, чем искать скил» | Готовый скил уже проверен на чужих ошибках. Твоё решение — нет. |
+| «Дам роадмап сразу, вопросы потом» | План без ответов о старте и времени — это фантазия. |
+| «Перечислю все темы для полноты» | Двадцать пунктов парализуют. Четыре-шесть — двигают. |
 | «Скажу про ошибку в конце, чтобы не сбивать» | В конце она уже стала привычкой. Жёлтый ставится сразу. |
 
 ## Red Flags — остановись
@@ -184,6 +202,8 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 - Ты написал термин и не объяснил его
 - В твоём тексте есть слово «просто» или «очевидно»
 - Начал решать задачу, не спросив, есть ли на неё готовый скил
+- Выдал роадмап, не задав четыре вопроса
+- Назвал скил или курс по памяти, не проверив поиском
 - Ты закрыл сразу пять пунктов чек-листа
 - Начал деплой, не посмотрев `claude mcp list`
 - Работаешь по циклу, не проверив, что процессные скилы вообще установлены
