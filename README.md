@@ -151,6 +151,41 @@ Python, pandas, NumPy, scikit-learn, PyTorch, Kaggle, SQL, Git, Docker, MDN.
 Баннер ставится **только под действие с инструментами**. На обычную реплику — нет:
 иначе он превращается в шум и перестаёт замечаться.
 
+## Автозапуск на каждый промпт
+
+В репозитории лежит `hooks/vibecoding-always.sh`. Он подключается один раз
+и после этого пропускает **каждый** запрос через правила скила — язык, баннеры,
+самостоятельность, поддержка, финальный блок «что сделать тебе».
+
+```bash
+mkdir -p ~/.claude/hooks
+cp hooks/vibecoding-always.sh ~/.claude/hooks/
+chmod +x ~/.claude/hooks/vibecoding-always.sh
+```
+
+Затем добавить в `~/.claude/settings.json` в массив `hooks.UserPromptSubmit`:
+
+```json
+{ "hooks": [{ "type": "command",
+              "command": "bash \"$HOME/.claude/hooks/vibecoding-always.sh\"" }] }
+```
+
+Хук молчит, если скил не установлен, — на чужой машине он ничего не сломает.
+
+## Проверка базового набора
+
+`skills/vibecoding/scripts/ensure-tools.sh` проверяет, чем агент вообще может
+работать: плагины (superpowers, claude-mem, frontend-design, vercel), скилы
+(agent-browser, find-skills, graphify, stitch-*), MCP (playwright, 21st).
+
+```bash
+bash ensure-tools.sh            # только проверить
+bash ensure-tools.sh --install  # доставить недостающее самому
+```
+
+Отдельно помечает строками `ЧЕЛОВЕК|авторизация|…` то, что требует входа через
+браузер и не может быть сделано за него.
+
 ## Делает сам, а не поручает
 
 Ученик пришёл строить, а не администрировать. Скил ставит скилы, плагины и MCP-серверы

@@ -61,6 +61,24 @@ bash ~/.claude/skills/vibecoding/scripts/diagnose.sh <путь>
 
 Полные правила тона и поддержки: скил `vibe-coding-mentor`, `references/tone.md`.
 
+## Вторая проверка: базовый набор инструментов
+
+Диагностика проекта отвечает «чего нет в коде». Вторая проверка отвечает
+«чем я вообще могу работать»:
+
+```bash
+bash ~/.claude/skills/vibecoding/scripts/ensure-tools.sh            # только проверить
+bash ~/.claude/skills/vibecoding/scripts/ensure-tools.sh --install  # доставить недостающее
+```
+
+Проверяет плагины (superpowers, claude-mem, frontend-design, vercel), скилы
+(agent-browser, find-skills, graphify, stitch-*, vibe-coding-mentor) и MCP
+(playwright, 21st). Строки `ЧЕЛОВЕК|авторизация|…` — то, что требует входа
+через браузер и не может быть сделано за него.
+
+**Недостающее ставь сам** — запускай с `--install` и объявляй баннером
+`✅ Я УСТАНОВИЛ`. Не пиши «тебе надо установить».
+
 ## Как читать вывод
 
 | Статус | Значение | Срочность |
