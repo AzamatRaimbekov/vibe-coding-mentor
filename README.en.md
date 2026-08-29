@@ -2,6 +2,8 @@
 
 **[Русская версия →](README.md)**
 
+[![skills.sh](https://skills.sh/b/AzamatRaimbekov/vibe-coding-mentor)](https://skills.sh/AzamatRaimbekov/vibe-coding-mentor)
+
 A Claude Code skill that **teaches you to build software with an agent** instead of
 just handing you code.
 

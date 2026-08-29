@@ -2,6 +2,8 @@
 
 **[English version →](README.en.md)**
 
+[![skills.sh](https://skills.sh/b/AzamatRaimbekov/vibe-coding-mentor)](https://skills.sh/AzamatRaimbekov/vibe-coding-mentor)
+
 Скил для Claude Code, который **учит строить софт вместе с агентом**, а не просто отдаёт код.
 
 Разворачивает обычный поток вайбкодинга: не «агент пишет — человек соглашается»,
