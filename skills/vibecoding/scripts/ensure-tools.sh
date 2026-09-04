@@ -1,65 +1,40 @@
 #!/usr/bin/env bash
-# Проверяет базовый набор вайбкодера и доставляет недостающее.
-# Запуск без аргументов — только проверка. С --install — ставит недостающее.
-INSTALL=0; [ "$1" = "--install" ] && INSTALL=1
-MISSING=0
+# Базовый набор вайбкодера: проверяет И СТАВИТ недостающее.
+# По умолчанию — ставит. --check-only — только показать, ничего не трогая.
+# Единый список скилов и плагинов живёт в скиле vibe-coding-mentor,
+# чтобы два скила не расходились в том, что считать обязательным.
+MENTOR="$HOME/.claude/skills/vibe-coding-mentor/scripts/ensure-tools.sh"
+MODE=""; [ "${1:-}" = "--check-only" ] && MODE="--dry-run"
 
-say() { printf '%s\n' "$1"; }
-have_skill() { [ -d "$HOME/.claude/skills/$1" ]; }
-have_plugin() { claude plugin list 2>/dev/null | grep -q "$1"; }
-have_mcp() { claude mcp list 2>/dev/null | grep -qi "^$1:"; }
+printf '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+if [ -n "$MODE" ]; then
+  printf '🔌  ПРОВЕРЯЮ БАЗОВЫЙ НАБОР  ✨\n'
+else
+  printf '📦  ДОСТАВЛЯЮ БАЗОВЫЙ НАБОР  ✨\n'
+fi
+printf '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
 
-say "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-say "🔌  ПРОВЕРЯЮ БАЗОВЫЙ НАБОР  ✨"
-say "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-# ---------- плагины ----------
-for p in superpowers claude-mem frontend-design vercel; do
-  if have_plugin "$p"; then
-    say "OK|плагин|$p"
-  else
-    MISSING=$((MISSING+1)); say "НЕТ|плагин|$p"
-    [ $INSTALL = 1 ] && claude plugin install "$p@claude-plugins-official" >/dev/null 2>&1 \
-      && say "  ✅ Я УСТАНОВИЛ — $p"
-  fi
-done
-
-# ---------- скилы: имя|источник ----------
-while IFS='|' read -r name src; do
-  [ -z "$name" ] && continue
-  if have_skill "$name"; then
-    say "OK|скил|$name"
-  else
-    MISSING=$((MISSING+1)); say "НЕТ|скил|$name"
-    if [ $INSTALL = 1 ]; then
-      npx skills add "$src" -g -y >/dev/null 2>&1
-      have_skill "$name" && say "  ✅ Я УСТАНОВИЛ — $name" || say "  ⚠️ не встал: $src"
-    fi
-  fi
-done <<'LIST'
-agent-browser|vercel-labs/agent-browser
-find-skills|vercel-labs/skills@find-skills
-graphify|
-vibe-coding-mentor|AzamatRaimbekov/vibe-coding-mentor
-stitch-generate-design|google-labs-code/stitch-skills
-taste-design|google-labs-code/stitch-skills
-shadcn-ui|google-labs-code/stitch-skills
-LIST
-
-# ---------- MCP ----------
-for m in playwright 21st; do
-  have_mcp "$m" && say "OK|mcp|$m" || { MISSING=$((MISSING+1)); say "НЕТ|mcp|$m"; }
-done
-if [ $INSTALL = 1 ] && ! have_mcp playwright; then
-  claude mcp add playwright -s user -- npx -y @playwright/mcp@latest >/dev/null 2>&1 \
-    && say "  🔌 Я ПОДКЛЮЧИЛ — playwright"
+if [ -x "$MENTOR" ] || [ -f "$MENTOR" ]; then
+  bash "$MENTOR" --with-stack $MODE
+else
+  printf 'FAILED|скил vibe-coding-mentor не установлен — ставлю\n'
+  [ -z "$MODE" ] && npx -y skills add AzamatRaimbekov/vibe-coding-mentor -g -y >/dev/null 2>&1
+  [ -f "$MENTOR" ] && bash "$MENTOR" --with-stack $MODE
 fi
 
-# ---------- требующие человека ----------
-claude mcp list 2>/dev/null | grep -i 'needs authentication' | while read -r line; do
-  say "ЧЕЛОВЕК|авторизация|${line%%:*}"
-done
+# ---------- MCP: доступ к внешнему миру ----------
+have_mcp() { claude mcp list 2>/dev/null | grep -qi "^$1:"; }
+if have_mcp playwright; then
+  printf 'OK mcp playwright\n'
+elif [ -n "$MODE" ]; then
+  printf 'DRY mcp playwright\n'
+else
+  claude mcp add playwright -s user -- npx -y @playwright/mcp@latest >/dev/null 2>&1
+  have_mcp playwright && printf '+ подключил playwright — умею открывать сайт и смотреть на него глазами\n' \
+                      || printf '! playwright не подключился\n'
+fi
 
-say "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-[ $MISSING = 0 ] && say "✅ ГОТОВО — базовый набор на месте" \
-                 || say "⚠️ Не хватает: $MISSING. Запусти с --install"
+# ---------- то, что может сделать только человек ----------
+claude mcp list 2>/dev/null | grep -i 'needs authentication' | while read -r line; do
+  printf 'ЧЕЛОВЕК авторизация %s\n' "${line%%:*}"
+done
