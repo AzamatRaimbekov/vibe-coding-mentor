@@ -13,19 +13,42 @@ It inverts the usual vibe-coding flow: not "agent writes, human agrees", but
 > **Language:** the skill content is in Russian. Triggers work in both Russian and English.
 > **Status:** working, but never pressure-tested with subagents (see Limitations).
 
-## Two skills in this repo
+## Three skills in this repo
 
 | Skill | Purpose | How to call |
 |-------|---------|-------------|
 | `vibe-coding-mentor` | Guides step by step, explains, checks understanding | triggers or `/vibe-coding-mentor` |
 | `vibecoding` | Project diagnostics: what's missing and what to do | `vibecoding сделай диагностику` |
+| `mcp-setup` | Connects access to external services (MCP) | "connect mcp", "design a screen" |
 
 ## Install
 
 ```bash
-npx skills add AzamatRaimbekov/vibe-coding-mentor -g -y            # both skills
+npx skills add AzamatRaimbekov/vibe-coding-mentor -g -y            # all skills
 npx skills add AzamatRaimbekov/vibe-coding-mentor@vibecoding -g -y # diagnostics only
 ```
+
+## Tools install themselves
+
+The skill does not report what is missing — it closes the gap. A SessionStart hook
+runs delivery in the background: missing plugins and skills are installed, and the
+result is announced. For a skill with no known source, the catalog is searched with
+`npx skills find` and the top hit is installed only if it has more than 1000 installs —
+below that it becomes a question for the human, because a skill runs with full agent
+permissions.
+
+Verification is done **on disk, not from installer output**: `npx skills add` can print
+an error on a successful install, and an MCP server can report `Connected` with a dead key.
+
+**The human is asked for exactly one thing — a key,** and only where the key exists
+solely in their account (Stitch, Supabase). Keys are never requested in chat:
+
+```bash
+bash ~/.claude/skills/mcp-setup/scripts/add-key.sh stitch <KEY>
+```
+
+The command stores the key in `~/.claude/.secrets/` with `600` permissions and connects
+the service immediately.
 
 ## Meet Azamat
 
