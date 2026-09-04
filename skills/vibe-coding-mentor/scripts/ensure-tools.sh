@@ -99,6 +99,7 @@ CORE=(
   "verification-before-completion=" "project-documentation-wiki="
   "find-skills=vercel-labs/skills"
   "vibecoding=AzamatRaimbekov/vibe-coding-mentor"
+  "mcp-setup=AzamatRaimbekov/vibe-coding-mentor"
 )
 STACK_SKILLS=(
   "agent-browser=vercel-labs/agent-browser"

@@ -23,18 +23,10 @@ else
 fi
 
 # ---------- MCP: доступ к внешнему миру ----------
-have_mcp() { claude mcp list 2>/dev/null | grep -qi "^$1:"; }
-if have_mcp playwright; then
-  printf 'OK mcp playwright\n'
-elif [ -n "$MODE" ]; then
-  printf 'DRY mcp playwright\n'
+# Список служб и правила разговора живут в скиле mcp-setup — здесь только вызов.
+MCP="$HOME/.claude/skills/mcp-setup/scripts/ensure-mcp.sh"
+if [ -f "$MCP" ]; then
+  bash "$MCP" ${MODE:+--check-only}
 else
-  claude mcp add playwright -s user -- npx -y @playwright/mcp@latest >/dev/null 2>&1
-  have_mcp playwright && printf '+ подключил playwright — умею открывать сайт и смотреть на него глазами\n' \
-                      || printf '! playwright не подключился\n'
+  printf '! скил mcp-setup не установлен — доступы не проверены\n'
 fi
-
-# ---------- то, что может сделать только человек ----------
-claude mcp list 2>/dev/null | grep -i 'needs authentication' | while read -r line; do
-  printf 'ЧЕЛОВЕК авторизация %s\n' "${line%%:*}"
-done
