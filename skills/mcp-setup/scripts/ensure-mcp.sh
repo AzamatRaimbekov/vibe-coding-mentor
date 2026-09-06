@@ -48,6 +48,7 @@ add_plain() {
 add_plain playwright claude mcp add playwright -s user -- npx -y @playwright/mcp@latest
 add_plain vercel     claude mcp add --transport http --scope user vercel https://mcp.vercel.com
 add_plain 21st       claude mcp add --transport http --scope user 21st https://21st.dev/api/mcp
+add_plain drawio     claude mcp add --scope user drawio -- npx -y @drawio/mcp@latest
 
 # ---- серверы с ключом: ключ есть → подключаю сам, нет → прошу ТОЛЬКО ключ ----
 SECRETS="$HOME/.claude/.secrets"
@@ -94,7 +95,7 @@ add_keyed supabase SUPABASE_ACCESS_TOKEN supabase-token \
 
 # ---- остальные серверы, требующие входа (о своих уже сказано выше) ----
 printf '%s' "$LIST" | grep -i 'needs authentication' \
-  | grep -viE 'vercel|21st|playwright|stitch|supabase' | while read -r line; do
+  | grep -viE 'vercel|21st|playwright|drawio|stitch|supabase' | while read -r line; do
   printf 'AUTH %s — набери /mcp и подтверди вход\n' "${line%%: http*}"
 done
 

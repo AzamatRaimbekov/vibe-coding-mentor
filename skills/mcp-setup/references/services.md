@@ -41,6 +41,19 @@ claude mcp add --transport http --scope user 21st https://21st.dev/api/mcp
 
 → [21st.dev](https://21st.dev)
 
+### draw.io — схемы, которые можно править мышкой
+
+**Без него ломается:** архитектуру я рисую только текстом (Mermaid). Человек видит
+код схемы, а не картинку, и не может подвинуть квадратик или подписать стрелку.
+
+```bash
+claude mcp add --scope user drawio -- npx -y @drawio/mcp@latest
+```
+
+Вход не нужен: схема открывается в редакторе draw.io в браузере на этой машине.
+Понимает готовые схемы draw.io, таблицы CSV и текст Mermaid.
+→ [документация](https://github.com/jgraph/drawio-mcp)
+
 ## Без человека нельзя
 
 ### Google Stitch — рисование макетов экранов

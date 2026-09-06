@@ -1,6 +1,6 @@
 ---
 name: mcp-setup
-description: Use when the agent needs access to the outside world and it is unclear what is connected - "подключи mcp", "настрой доступы", "почему ты не видишь логи", "не видишь мою базу", "подключи vercel", "подключи supabase", "подключи stitch", "нарисуй макет", "сделай дизайн экрана", "connect mcp", "set up mcp servers". Also use before deploying, before touching a database, before generating UI or screen mockups, and whenever a tool call fails with an authentication error rather than a code error.
+description: Use when the agent needs access to the outside world and it is unclear what is connected - "подключи mcp", "настрой доступы", "почему ты не видишь логи", "не видишь мою базу", "подключи vercel", "подключи supabase", "подключи stitch", "подключи drawio", "нарисуй схему", "нарисуй макет", "сделай дизайн экрана", "connect mcp", "set up mcp servers". Also use before deploying, before touching a database, before generating UI or screen mockups, and whenever a tool call fails with an authentication error rather than a code error.
 ---
 
 # Подключение доступов (MCP)
@@ -33,7 +33,7 @@ bash ~/.claude/skills/mcp-setup/scripts/add-key.sh <служба> <КЛЮЧ> # �
 входа прямо в браузере — использовать, только когда человек сказал «давай подключим»:
 самовольно открытые вкладки раздражают.
 
-Запускается перед деплоем, перед работой с базой, перед рисованием макетов —
+Запускается перед деплоем, перед работой с базой, перед рисованием макетов и схем —
 и всегда, когда вызов инструмента упал с ошибкой доступа, а не кода.
 
 ## Как читать вывод
@@ -65,6 +65,7 @@ bash ~/.claude/skills/mcp-setup/scripts/add-key.sh <служба> <КЛЮЧ> # �
 | Playwright | всё | ничего |
 | Vercel | добавляю сервер | подтверждает вход в браузере (`/mcp`) |
 | 21st.dev | добавляю сервер | подтверждает вход |
+| draw.io | всё | ничего |
 | **Stitch** | собираю и выполняю команду подключения | **приносит ключ** |
 | **Supabase** | то же | **приносит токен** |
 
