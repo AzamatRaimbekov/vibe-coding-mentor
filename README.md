@@ -61,6 +61,19 @@ npx skills add AzamatRaimbekov/vibe-coding-mentor@vibecoding -g -y # тольк�
 Или вручную — скопировать папки из `skills/` в `~/.claude/skills/`.
 После установки скилы доступны в новой сессии.
 
+### Обновление приходит само
+
+Хук старта сессии раз в сутки в фоне запускает `scripts/self-update.sh`: он сверяет
+установленную версию с GitHub и, если там новее, обновляет скилы и подключённые хуки.
+Личные файлы — `lessons.md`, `student-profile.md`, папка `.state` — не трогаются.
+Скилы, поставленные через `npx skills`, обновляются его же командой `update`.
+О результате агент говорит баннером `✅ Я ОБНОВИЛ` в начале следующей сессии.
+
+```bash
+bash ~/.claude/skills/vibe-coding-mentor/scripts/self-update.sh --now        # обновить сейчас
+bash ~/.claude/skills/vibe-coding-mentor/scripts/self-update.sh --check-only # только проверить
+```
+
 ## Диагностика: `vibecoding`
 
 ```
@@ -292,7 +305,7 @@ chmod +x ~/.claude/hooks/vibecoding-always.sh
 
 `skills/vibecoding/scripts/ensure-tools.sh` проверяет, чем агент вообще может
 работать: плагины (superpowers, claude-mem, frontend-design, vercel), скилы
-(agent-browser, find-skills, graphify, stitch-*), MCP (playwright, 21st).
+(agent-browser, find-skills, graphify, stitch-*), MCP (playwright, 21st, drawio).
 
 ```bash
 bash ensure-tools.sh            # только проверить
