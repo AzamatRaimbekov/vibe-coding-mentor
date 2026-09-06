@@ -533,6 +533,14 @@ npx skills add trkbt10/indexion-skills@indexion-readme -g -y        #   5.1K —
 npx skills add open-mercato/skills@om-root-cause -g -y              #    743 — причина бага
 ```
 
+**И три скила обвязки агента (harness)** — для правки самого учителя, а не продукта:
+
+```bash
+npx skills add walkinglabs/learn-harness-engineering@harness-creator -g -y  # 2K   — CLAUDE.md, хуки, границы
+npx skills add affaan-m/ecc@eval-harness -g -y                              # 9.1K — не стал ли агент хуже
+npx skills add zernie/vigiles@test-harness -g -y                            # 1.5K — хук/скил включается?
+```
+
 Дальше — **работать**, и доставлять под стек по мере надобности: TypeScript, React/Next.js,
 security review, web vitals, refactor, commit messages, PR review, документация.
 Полные таблицы с числами установок — в файле скила.

@@ -51,6 +51,27 @@ npx skills add trkbt10/indexion-skills@indexion-readme -g -y
 npx skills add open-mercato/skills@om-root-cause -g -y
 ```
 
+## Уровень 1.5. Обвязка агента (harness)
+
+**Harness** — всё, что окружает агента и не даёт ему ошибаться: правила в `CLAUDE.md`,
+хуки, проверки перед «готово», память между сессиями. Как кухня, обустроенная так,
+чтобы повар не перепутал соль с сахаром. → [что это](https://skills.sh/walkinglabs/learn-harness-engineering/harness-creator)
+
+| Скил | Установок | Зачем | Когда зову |
+|------|-----------|-------|------------|
+| `walkinglabs/learn-harness-engineering@harness-creator` | 2K | Строит и проверяет обвязку: `CLAUDE.md`, хуки, границы, передача сессии | Агент забывает контекст, выходит за рамки, говорит «готово» до тестов |
+| `affaan-m/ecc@eval-harness` | 9.1K | Контрольные задачи для самого агента: не стал ли он хуже после правки правил | Поменял `SKILL.md`, хук или `CLAUDE.md` — прогнать до и после |
+| `zernie/vigiles@test-harness` | 1.5K | Проверяет, что хук срабатывает, скил вызывается, подсказка попадает в контекст | Написал новый хук или скил — доказать, что он вообще включается |
+
+```bash
+npx skills add walkinglabs/learn-harness-engineering@harness-creator -g -y
+npx skills add affaan-m/ecc@eval-harness -g -y
+npx skills add zernie/vigiles@test-harness -g -y
+```
+
+Для человека без ИТ эти три не называются по имени. Говорится пользой: «проверю,
+что новое правило включается», «сравню, не стал ли я хуже после правки».
+
 ## Уровень 2. Под стек
 
 Ставить только то, на чём реально пишешь.

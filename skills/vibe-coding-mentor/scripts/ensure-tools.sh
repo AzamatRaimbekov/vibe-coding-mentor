@@ -110,6 +110,9 @@ STACK_SKILLS=(
   "accessibility=addyosmani/web-quality-skills@accessibility"
   "indexion-readme=trkbt10/indexion-skills@indexion-readme"
   "om-root-cause=open-mercato/skills@om-root-cause"
+  "harness-creator=walkinglabs/learn-harness-engineering@harness-creator"
+  "eval-harness=affaan-m/ecc@eval-harness"
+  "test-harness=zernie/vigiles@test-harness"
 )
 TARGETS=("${CORE[@]}"); [ "$STACK" = 1 ] && TARGETS+=("${STACK_SKILLS[@]}")
 
