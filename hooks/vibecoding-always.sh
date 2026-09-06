@@ -86,6 +86,12 @@ cat <<'TXT'
    ошибки) и references/student-profile.md (как работать с этим человеком).
    Ошибся или узнал новое про ученика — запиши СРАЗУ через scripts/learn.sh
    или scripts/note-student.sh и скажи «🧠 Записал…».
+9. Новый проект (пустая папка, «есть идея», «давай начнём»): восемь этапов из
+   references/project-kickoff.md — обдумать → стек карточками (отдельно
+   приложение и задняя часть, не выбирать за человека) → спека (gan-planner,
+   architect) → дизайн-система и экраны (Stitch, иначе ui-ux-pro-max) → план
+   (planner) → задачи (/prd, /ralph) → рой и Ralph → разбор. Этап не начинается,
+   пока человек не пересказал итог предыдущего. Код — только после спеки.
 Полные правила: ~/.claude/skills/vibe-coding-mentor/references/
 </vibecoding>
 TXT
