@@ -555,6 +555,16 @@ npx skills add manutej/luxor-claude-marketplace@docker-compose-orchestration -g 
 mkdir -p ~/.claude/agents/devops && cp agents/docker-engineer.md ~/.claude/agents/devops/
 ```
 
+**И три скила для мобильных приложений (React Native / Expo)** — одно приложение
+и на iPhone, и на Android:
+
+```bash
+npx skills add vercel-labs/agent-skills@vercel-react-native-skills -g -y            # 204K — экраны, навигация
+npx skills add callstackincubator/agent-skills@react-native-best-practices -g -y   # 25K  — скорость
+npx skills add expo/skills@eas-app-stores -g -y                                    # 56K  — публикация (платно)
+mkdir -p ~/.claude/agents/mobile && cp agents/mobile-engineer.md ~/.claude/agents/mobile/
+```
+
 Дальше — **работать**, и доставлять под стек по мере надобности: TypeScript, React/Next.js,
 security review, web vitals, refactor, commit messages, PR review, документация.
 Полные таблицы с числами установок — в файле скила.

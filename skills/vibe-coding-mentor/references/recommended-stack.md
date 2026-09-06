@@ -94,6 +94,29 @@ npx skills add manutej/luxor-claude-marketplace@docker-compose-orchestration -g 
 Агент `docker-engineer` (`~/.claude/agents/devops/docker-engineer.md`) знает,
 какой из четырёх звать в какой ситуации; зову его на любую задачу про контейнеры.
 
+## Уровень 1.7. React Native (мобильные приложения)
+
+**React Native** — способ написать одно приложение, которое работает и на iPhone,
+и на Android. Как один текст, который печатается и в книге, и на сайте. **Expo** —
+набор инструментов вокруг него: показывает приложение на твоём телефоне через
+QR-код, не требуя ничего ставить. → [expo.dev](https://docs.expo.dev/)
+
+| Скил | Установок | Зачем | Когда зову |
+|------|-----------|-------|------------|
+| `vercel-labs/agent-skills@vercel-react-native-skills` | 204K | Экраны, навигация, камера/GPS, правила хорошего кода | Любая новая часть приложения |
+| `callstackincubator/agent-skills@react-native-best-practices` | 25K | Скорость: списки, анимации, время открытия | Приложение тормозит или дёргается |
+| `google-labs-code/stitch-skills@stitch::react-native` | 6K | Экраны из макета Stitch | Есть дизайн — нужен код |
+| `expo/skills@eas-app-stores` | 56K | Сборка на телефон и публикация в App Store / Google Play | Пора отдать приложение людям. **Платно** |
+
+```bash
+npx skills add vercel-labs/agent-skills@vercel-react-native-skills -g -y
+npx skills add callstackincubator/agent-skills@react-native-best-practices -g -y
+npx skills add expo/skills@eas-app-stores -g -y
+```
+
+Агент `mobile-engineer` (`~/.claude/agents/mobile/mobile-engineer.md`) выбирает
+нужный и предупреждает о платном шаге до его запуска.
+
 ## Уровень 2. Под стек
 
 Ставить только то, на чём реально пишешь.

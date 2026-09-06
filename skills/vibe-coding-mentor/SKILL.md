@@ -341,6 +341,10 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 между `docker-setup`, `multi-stage-dockerfile`, `docker-patterns` и
 `docker-compose-orchestration`. Уровень 1.6 там же.
 
+**Мобильное приложение** (React Native, Expo, «на телефон», App Store) идёт агенту
+`mobile-engineer`: `vercel-react-native-skills`, `react-native-best-practices`,
+`stitch-react-native`, `eas-app-stores`. Уровень 1.7 там же.
+
 ## Подбор скила под задачу
 
 Каждая задача начинается с вопроса «есть ли на это готовый скил». Порядок жёсткий:

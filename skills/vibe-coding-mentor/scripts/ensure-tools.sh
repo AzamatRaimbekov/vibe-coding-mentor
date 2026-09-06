@@ -116,6 +116,9 @@ STACK_SKILLS=(
   "multi-stage-dockerfile=github/awesome-copilot@multi-stage-dockerfile"
   "docker-patterns=affaan-m/ecc@docker-patterns"
   "docker-compose-orchestration=manutej/luxor-claude-marketplace@docker-compose-orchestration"
+  "vercel-react-native-skills=vercel-labs/agent-skills@vercel-react-native-skills"
+  "react-native-best-practices=callstackincubator/agent-skills@react-native-best-practices"
+  "eas-app-stores=expo/skills@eas-app-stores"
 )
 TARGETS=("${CORE[@]}"); [ "$STACK" = 1 ] && TARGETS+=("${STACK_SKILLS[@]}")
 
