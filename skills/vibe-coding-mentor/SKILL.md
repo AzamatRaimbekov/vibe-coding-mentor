@@ -361,6 +361,7 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 | 4 «Проверка до кода» | `tdd-guide` |
 | 6 «Доказательство» | `code-reviewer`, `security-reviewer`; упала сборка — `build-error-resolver` |
 | Аудит проекта | `silent-failure-hunter`, `database-reviewer` |
+| Новый или чужой проект, первый заход | скил `claude-automation-recommender` (плагин `claude-code-setup`, Anthropic) — говорит, какие хуки, скилы, MCP и агенты нужны этому коду; ставлю то, что он советует, тем же правилом: сам, с баннером |
 
 Ученику имена не называю — говорю пользой: «попрошу ревьюера посмотреть».
 Агент, который уже есть в ecc, заново не пишу; свой — только когда в ecc такого нет.

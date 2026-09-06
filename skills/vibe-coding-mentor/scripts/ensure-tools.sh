@@ -34,6 +34,7 @@ PLUGINS=(
   "vercel@claude-plugins-official"
   "ecc@ecc"
   "ralph-skills@ralph-marketplace"
+  "claude-code-setup@claude-plugins-official"
 )
 MARKETPLACES=("claude-plugins-official=anthropics/claude-plugins-official" "thedotmack=thedotmack/claude-mem" "ecc=affaan-m/ecc" "ralph-marketplace=snarktank/ralph")
 

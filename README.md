@@ -539,6 +539,7 @@ npx skills add open-mercato/skills@om-root-cause -g -y              #    743 —
 ```bash
 claude plugin marketplace add affaan-m/ecc && claude plugin install ecc@ecc
 claude plugin marketplace add snarktank/ralph && claude plugin install ralph-skills@ralph-marketplace
+claude plugin install claude-code-setup@claude-plugins-official   # советует обвязку под проект
 bash ~/.claude/skills/vibe-coding-mentor/scripts/ralph-init.sh <проект>   # включить Ralph в проекте
 ```
 

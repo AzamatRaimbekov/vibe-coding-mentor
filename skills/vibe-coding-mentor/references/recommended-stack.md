@@ -56,11 +56,13 @@ npx skills add open-mercato/skills@om-root-cause -g -y
 | Плагин | Что даёт | Когда зову |
 |--------|----------|------------|
 | `ecc@ecc` (маркетплейс `affaan-m/ecc`) | 68 агентов: планировщик, ревьюеры, безопасность, починка сборки; 286 скилов; хуки | На каждом шаге цикла: план → тест → код → ревью |
+| `claude-code-setup@claude-plugins-official` (Anthropic) | Смотрит на проект и советует, какие хуки, скилы, MCP и агенты ему нужны | Новый или чужой проект: первым делом, чтобы обвязку подбирать по коду, а не по памяти |
 | `ralph-skills@ralph-marketplace` (`snarktank/ralph`) | `/prd` пишет требования, `/ralph` превращает их в список задач; `ralph-init.sh` кладёт цикл в проект | Пачка задач без присмотра, когда ученик уже понимает каждую |
 
 ```bash
 claude plugin marketplace add affaan-m/ecc && claude plugin install ecc@ecc
 claude plugin marketplace add snarktank/ralph && claude plugin install ralph-skills@ralph-marketplace
+claude plugin install claude-code-setup@claude-plugins-official
 bash ~/.claude/skills/vibe-coding-mentor/scripts/ralph-init.sh <проект>
 ```
 
