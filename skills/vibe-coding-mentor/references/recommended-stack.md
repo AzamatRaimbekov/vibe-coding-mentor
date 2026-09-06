@@ -72,6 +72,28 @@ npx skills add zernie/vigiles@test-harness -g -y
 Для человека без ИТ эти три не называются по имени. Говорится пользой: «проверю,
 что новое правило включается», «сравню, не стал ли я хуже после правки».
 
+## Уровень 1.6. Docker
+
+**Docker** — способ упаковать программу вместе со всем, что ей нужно, в один
+контейнер, который одинаково запускается на любом компьютере. Как ланч-бокс:
+еда, вилка и салфетка внутри, открыл — и ешь где угодно. → [docker.com](https://www.docker.com/get-started/)
+
+| Скил | Установок | Зачем | Когда зову |
+|------|-----------|-------|------------|
+| `docker-setup` (свой, из этого репо) | — | Ставит Docker с нуля, доводит до зелёного `Hello from Docker!` | Docker не стоит, «кит погас», `cannot connect to the Docker daemon` |
+| `github/awesome-copilot@multi-stage-dockerfile` | 23K | Пишет Dockerfile, который собирает маленький и быстрый образ | Нужен Dockerfile или он слишком толстый |
+| `affaan-m/ecc@docker-patterns` | 11.2K | Проверяет Dockerfile и compose: безопасность, сети, тома, здоровье сервисов | Ревью контейнеров перед публикацией |
+| `manutej/luxor-claude-marketplace@docker-compose-orchestration` | 2.7K | Запускает несколько сервисов вместе: приложение + база + кэш | Чужой проект с `docker-compose.yml`, локальная база |
+
+```bash
+npx skills add github/awesome-copilot@multi-stage-dockerfile -g -y
+npx skills add affaan-m/ecc@docker-patterns -g -y
+npx skills add manutej/luxor-claude-marketplace@docker-compose-orchestration -g -y
+```
+
+Агент `docker-engineer` (`~/.claude/agents/devops/docker-engineer.md`) знает,
+какой из четырёх звать в какой ситуации; зову его на любую задачу про контейнеры.
+
 ## Уровень 2. Под стек
 
 Ставить только то, на чём реально пишешь.

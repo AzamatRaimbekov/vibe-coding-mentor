@@ -113,6 +113,9 @@ STACK_SKILLS=(
   "harness-creator=walkinglabs/learn-harness-engineering@harness-creator"
   "eval-harness=affaan-m/ecc@eval-harness"
   "test-harness=zernie/vigiles@test-harness"
+  "multi-stage-dockerfile=github/awesome-copilot@multi-stage-dockerfile"
+  "docker-patterns=affaan-m/ecc@docker-patterns"
+  "docker-compose-orchestration=manutej/luxor-claude-marketplace@docker-compose-orchestration"
 )
 TARGETS=("${CORE[@]}"); [ "$STACK" = 1 ] && TARGETS+=("${STACK_SKILLS[@]}")
 

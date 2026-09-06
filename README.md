@@ -541,6 +541,20 @@ npx skills add affaan-m/ecc@eval-harness -g -y                              # 9.
 npx skills add zernie/vigiles@test-harness -g -y                            # 1.5K — хук/скил включается?
 ```
 
+**И три скила про Docker** — контейнеры, в которых проект запускается одинаково везде:
+
+```bash
+npx skills add github/awesome-copilot@multi-stage-dockerfile -g -y                       # 23K   — Dockerfile
+npx skills add affaan-m/ecc@docker-patterns -g -y                                        # 11.2K — ревью контейнеров
+npx skills add manutej/luxor-claude-marketplace@docker-compose-orchestration -g -y       # 2.7K  — несколько сервисов
+```
+
+И агент, который сам выбирает нужный из них:
+
+```bash
+mkdir -p ~/.claude/agents/devops && cp agents/docker-engineer.md ~/.claude/agents/devops/
+```
+
 Дальше — **работать**, и доставлять под стек по мере надобности: TypeScript, React/Next.js,
 security review, web vitals, refactor, commit messages, PR review, документация.
 Полные таблицы с числами установок — в файле скила.

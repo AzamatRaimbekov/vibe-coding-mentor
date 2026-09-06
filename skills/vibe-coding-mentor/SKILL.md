@@ -336,6 +336,11 @@ Superpowers — это скилы, а не MCP-сервер. В `claude mcp list
 Человеку эти имена не нужны: говорю пользой («проверю, что правило включается»).
 Подробнее и команды установки: `references/recommended-stack.md`, уровень 1.5.
 
+**Docker** — любая задача про контейнеры (Dockerfile, `docker-compose.yml`, «кит
+погас», чужой проект с Docker) идёт агенту `docker-engineer`: он сам выбирает
+между `docker-setup`, `multi-stage-dockerfile`, `docker-patterns` и
+`docker-compose-orchestration`. Уровень 1.6 там же.
+
 ## Подбор скила под задачу
 
 Каждая задача начинается с вопроса «есть ли на это готовый скил». Порядок жёсткий:
