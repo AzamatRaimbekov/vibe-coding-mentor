@@ -32,8 +32,10 @@ PLUGINS=(
   "claude-mem@thedotmack"
   "frontend-design@claude-plugins-official"
   "vercel@claude-plugins-official"
+  "ecc@ecc"
+  "ralph-skills@ralph-marketplace"
 )
-MARKETPLACES=("claude-plugins-official=anthropics/claude-plugins-official" "thedotmack=thedotmack/claude-mem")
+MARKETPLACES=("claude-plugins-official=anthropics/claude-plugins-official" "thedotmack=thedotmack/claude-mem" "ecc=affaan-m/ecc" "ralph-marketplace=snarktank/ralph")
 
 plugin_present() {   # по локальному реестру — быстро, без запуска claude
   local n="${1%@*}"

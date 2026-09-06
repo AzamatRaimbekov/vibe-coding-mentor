@@ -533,6 +533,15 @@ npx skills add trkbt10/indexion-skills@indexion-readme -g -y        #   5.1K —
 npx skills add open-mercato/skills@om-root-cause -g -y              #    743 — причина бага
 ```
 
+**Рабочий слой — ставится каждому автоматически** через `ensure-tools.sh`:
+**ecc** (68 агентов: план, ревью, безопасность) и **Ralph** (цикл задач без присмотра):
+
+```bash
+claude plugin marketplace add affaan-m/ecc && claude plugin install ecc@ecc
+claude plugin marketplace add snarktank/ralph && claude plugin install ralph-skills@ralph-marketplace
+bash ~/.claude/skills/vibe-coding-mentor/scripts/ralph-init.sh <проект>   # включить Ralph в проекте
+```
+
 **И три скила обвязки агента (harness)** — для правки самого учителя, а не продукта:
 
 ```bash

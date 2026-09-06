@@ -51,6 +51,22 @@ npx skills add trkbt10/indexion-skills@indexion-readme -g -y
 npx skills add open-mercato/skills@om-root-cause -g -y
 ```
 
+## Уровень 1.4. Рабочий слой: ecc + Ralph (ставится всем)
+
+| Плагин | Что даёт | Когда зову |
+|--------|----------|------------|
+| `ecc@ecc` (маркетплейс `affaan-m/ecc`) | 68 агентов: планировщик, ревьюеры, безопасность, починка сборки; 286 скилов; хуки | На каждом шаге цикла: план → тест → код → ревью |
+| `ralph-skills@ralph-marketplace` (`snarktank/ralph`) | `/prd` пишет требования, `/ralph` превращает их в список задач; `ralph-init.sh` кладёт цикл в проект | Пачка задач без присмотра, когда ученик уже понимает каждую |
+
+```bash
+claude plugin marketplace add affaan-m/ecc && claude plugin install ecc@ecc
+claude plugin marketplace add snarktank/ralph && claude plugin install ralph-skills@ralph-marketplace
+bash ~/.claude/skills/vibe-coding-mentor/scripts/ralph-init.sh <проект>
+```
+
+Чем платим: ecc большой, каждая сессия читает описания его агентов и скилов.
+Для ученика это нормальная цена за то, что ревью и план идут не «по памяти».
+
 ## Уровень 1.5. Обвязка агента (harness)
 
 **Harness** — всё, что окружает агента и не даёт ему ошибаться: правила в `CLAUDE.md`,
